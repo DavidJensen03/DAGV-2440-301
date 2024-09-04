@@ -1,0 +1,42 @@
+
+// creates first sphere and moves it up
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2;
+move -absolute 0 1 0 ;
+// creates second sphere and moves it up and increses its radius
+polySphere -radius 1 -subdivisionsX 20 -subdivisionsY 20 -axis 0 1 0 -createUVs 2;
+polySphere -e -radius .7;
+move -absolute 0 2.4 0 ;
+
+// duplicate it and  moves and scales it. 
+duplicate -rr;
+move -absolute 0 3.3 0 ;
+scale -relative .7 .7 .7; 
+
+// creats portions for hat
+polyCylinder -radius .7 -height .15 -subdivisionsX 12 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0;
+move -absolute 0 -.4 0 ;
+polyCylinder -radius .4 -height .8 -subdivisionsX 12 -subdivisionsY 1 -subdivisionsZ 1 -axis 0 1 0;
+
+// groups them togather and moves then up
+select -replace pCylinder2 ;
+select -toggle pCylinder1 ;
+doGroup 0 1 1;
+move -absolute 0 4 .135 ;
+rotate -absolute 13 0 0 ;
+
+// creats the nose, moves to postion, ans smooths some edges 
+polyCone -radius .1 -height 1 -subdivisionsX 12;
+move -absolute .56 3.3 .0 ;
+rotate -absolute 0 0 -99.046 ;
+select -replace pCone1.e[12:23] ;
+polySoftEdge -angle 180 -constructionHistory 1 pCone1.e[12:23];
+
+
+// makes scarf
+polyTorus -radius .5 -sectionRadius 0.224 -twist 0 -subdivisionsX 20 -subdivisionsY 20 -ax 0 1 0;
+move -absolute 0 2.88 0 ;
+
+// makes scarf edges
+polyCube -width .2 -height 1 -depth .5;
+move -absolute 0.713 2.402 -0.54;
+rotate -absolute 27.278 23.9 46 ;
