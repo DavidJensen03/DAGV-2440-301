@@ -1,0 +1,53 @@
+int $NumOfPetts;
+$NumOfPetts = rand(0,40);
+print ($NumOfPetts);
+
+float $rotationsForPetts;
+$rotationsForPetts = 360 / $NumOfPetts;
+print ($rotationsForPetts);
+
+float $orginalRo;
+$orginalRo = $rotationsForPetts;
+
+float $curRotate;
+$curRotate = 1;
+
+float $randNum;
+$randNum = 0;
+
+float $randHight;
+$randHight = rand(3,10);
+
+
+
+polyPlane -name "deeeeee" -width 1 -height 1 -subdivisionsX 2 -subdivisionsY 2 -ax 0 1 0 -createUVs 2 -constructionHistory 1;
+select -replace deeeeee.vtx[0:8] ;
+select -deselect deeeeee.vtx[1] deeeeee.vtx[3:5] deeeeee.vtx[7] ;
+scale -relative -p 0cm 0cm 0cm 0.694101 0.694101 0.694101 ;
+select -add deeeeee.e[0:2] deeeeee.e[4] deeeeee.e[6] deeeeee.e[9:11] ;
+polyExtrudeEdge -constructionHistory 1 -keepFacesTogether 1 -pvx 0 -pvy 0 -pvz 0 -divisions 1 -twist 0 -taper 1 -offset 0.100 -thickness -0.1 -smoothingAngle 30 deeeeee.e[0:2] deeeeee.e[4] deeeeee.e[6] deeeeee.e[9:11];
+polySoftEdge -a 180 -ch 1 deeeeee.f[0:11];
+
+polyPlane -width 0.4  -height 1 -subdivisionsX 2 -subdivisionsY 3 -ax 0 1 0 -createUVs 2 -constructionHistory 1;
+move -relative 0 0 -0.809378 ;
+select -replace pPlane1.vtx[0:2] pPlane1.vtx[9:11] ;
+move -relative 0 -0.0937985 0 ;
+scale -relative -p 0cm -0.0937985cm -0.809378cm 0.398617 1 1 ;
+move -rotatePivotRelative 0 0 0 pPlane1.scalePivot pPlane1.rotatePivot ;
+
+// dupes it and rotates them based on how many pettles there are
+for( $curRotate = 1; $curRotate<$NumOfPetts; ++$curRotate )
+		{
+            $randNum = rand(1,1.5);
+            select -r pPlane1 ;
+            duplicate -rr;
+            scale -r $randNum $randNum $randNum ;
+            rotate -r -ws -fo 0 ($rotationsForPetts * $curRotate) 0 ;
+		}
+
+select -all;
+doGroup 0 1 1;
+move -relative 0 ($randHight) 0;
+rotate -relative -worldSpace -forceOrderXYZ 0 0 -69.810525 ;
+//makes stem
+polyCube -width .1 -height ($randHight*1.96) -depth .1;
