@@ -1,17 +1,19 @@
 
 
-proc CreateStairs(int $numOfStairs, float $stairWidth, float $stairsHeight, float $stairDepth, float $stairOffset)
+proc GenerateStaircase(int $numOfStairs, float $stairWidth, float $stairsHeight, float $stairDepth, float $stairOffset, float $stepHeight, float $stepRot)
 {
       polyCube -width $stairWidth -height $stairsHeight -depth $stairDepth;
-      move -r 0 0 ($stairDepth * .5) ;
-      move -r 0 0 (($stairDepth * -.5) + $stairOffset * -1) pCube1.scalePivot pCube1.rotatePivot ;
+      move -relative 0 0 ($stairDepth * .5) ;
+      move -relative 0 0 (($stairDepth * -.5) + $stairOffset * -1) pCube1.scalePivot pCube1.rotatePivot ;
 
-      while($numOfStairs != 0)
+      while(($numOfStairs - 1) != 0)
       {
             $numOfStairs--;
-            print("dddd");
-            
+            duplicate -rr;
+            move -relative 0 $stairsHeight 0 ;
+            move -relative 0 ($stepHeight * .01) 0 ;
+            rotate -relative -ws -fo 0 $stepRot 0 ;
       }
 
 }
-CreateStairs(1, 1, 2, 3, 1);
+GenerateStaircase(20, 8, 3, .5, -6, 4, 25);
