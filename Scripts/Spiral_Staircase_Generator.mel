@@ -1,0 +1,17 @@
+
+
+proc CreateStairs(int $numOfStairs, float $stairWidth, float $stairsHeight, float $stairDepth, float $stairOffset)
+{
+      polyCube -width $stairWidth -height $stairsHeight -depth $stairDepth;
+      move -r 0 0 ($stairDepth * .5) ;
+      move -r 0 0 (($stairDepth * -.5) + $stairOffset * -1) pCube1.scalePivot pCube1.rotatePivot ;
+
+      while($numOfStairs != 0)
+      {
+            $numOfStairs--;
+            print("dddd");
+            
+      }
+
+}
+CreateStairs(1, 1, 2, 3, 1);
