@@ -1,0 +1,7 @@
+proc test(float $input)
+{
+      if (size(%input) <= 0)
+      {}
+
+}
+test
