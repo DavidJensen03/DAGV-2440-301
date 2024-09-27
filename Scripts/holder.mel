@@ -1,0 +1,10 @@
+///
+       if ($input[$i] % 2 == 0)
+            {
+                  print ($input[$i]);
+            }
+            else
+            {
+                 print("no");
+            }
+///
