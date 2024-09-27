@@ -97,7 +97,8 @@ proc float median(float $input[])
 }
 
 
-float $ListOfNum[] = {2,2,3,4,5,6,7};
+float $ListOfNum[] = {1,2,3,4,5,6,7};
+$ListOfNum = `sort $ListOfNum`;
 
 
 print (add ($ListOfNum) + "\n");
