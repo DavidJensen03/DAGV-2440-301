@@ -1,4 +1,7 @@
-proc float add(float $input[])
+
+
+
+global proc float add(float $input[])
 {
        float $curNum = 0;
       for ($i=0; $i<(size($input)); $i++)
@@ -82,29 +85,79 @@ proc float median(float $input[])
       int $medDet2 = 0;
       if ((size($input) % 2) == 0)
       {
-            
             int $medDet = (size($input) / 2);
             float $medDet2 = (($input[$medDet] + $input[$medDet + 1]) / 2);
             return ($medDet2);
       }
       else
       {
-            print("odd");
             int $medDet = ((size($input) / 2));
             float $medDet2 = ($input[$medDet]);
             return ($medDet2);
       }
 }
+proc sayStatment(string $Operation, float $input[])
+{
+      print ("if you " + $Operation);
+      for ($i=0; $i<(size($input)); $i++)
+      {
+            print(" " + $input[$i] + ",");
+      }
+      print (" you'll get ");
+}
+global proc Calculator(string $Operation)
+{
+      //here
+      global float $ListOfNum[] = {1,2,3,8,5};
+      if ($Operation == "add")
+      {
+            print (add ($ListOfNum));  
+      }
+      else if ($Operation == "subtract")
+      {
+           
+            print (subtract ($ListOfNum));
+            
+            
+      }
+      else if ($Operation == "multiple")
+      {
+            
+            print (multiple ($ListOfNum));
+            
+            
+      }
+      else if ($Operation == "powerOf")
+      {
+            
+            print (powerOf ($ListOfNum));
+            
+      }
+      else if ($Operation == "mean")
+      {
+            print (mean ($ListOfNum));
+      }
+      else if ($Operation == "median")
+      {
+            $ListOfNum = `sort $ListOfNum`;
+            print (median ($ListOfNum));
+      }
+      else
+      {
+            print("that isnt a valid operation");
+      }
 
-
-float $ListOfNum[] = {1,2,3,4,5,6,7};
-$ListOfNum = `sort $ListOfNum`;
-
-
-print (add ($ListOfNum) + "\n");
-print (subtract ($ListOfNum)+ "\n");
-print (multiple ($ListOfNum)+ "\n");
-print (powerOf ($ListOfNum)+ "\n");
-print (mean ($ListOfNum)+ "\n");
-print (median ($ListOfNum)+ "\n");
+}
+// the list varible is in the Calculator because for the life of me it would not work otherwise,
+//if i did Calculator(string $Operation, float $input[]); It would have just shown a bunch of errors, 
+//I slent alot of hours on this, and it still didnt work. 
+string $SetOperation = "add";
+sayStatment($SetOperation, $ListOfNum);
+Calculator($SetOperation);
+//print (add ($ListOfNum) + "\n");
+//print (subtract ($ListOfNum)+ "\n");
+//print (multiple ($ListOfNum)+ "\n");
+//print (powerOf ($ListOfNum)+ "\n");
+//print (mean ($ListOfNum)+ "\n");
+//print (median ($ListOfNum)+ "\n");
 
