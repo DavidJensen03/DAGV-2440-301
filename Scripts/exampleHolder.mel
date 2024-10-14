@@ -1,0 +1,51 @@
+global proc adding()
+{
+      string $var1 = `optionVar -q "floatfeild1"`;
+      string $var2 = `optionVar -q "floatfeild2"`;
+      string $var3 = `optionVar -q "floatfeild3"`;
+      string $var4 = `optionVar -q "myTextFeild"`;
+
+      float $value1 = `floatField -q -value $var1`;
+      float $value2 = `floatField -q -value $var2`;
+
+      float $sum = $value1 + $value2;
+
+      floatField -e -value $sum $var3;
+      textField -e -text ("there " + $sum) $var4;
+
+}
+global proc stateValue()
+{
+      string $var1 = `optionVar -q "floatfeild1"`;
+      print($var1 + "\n");
+      print(`floatField -q -value $var1`);
+      
+}
+
+string $mWindow = "my_tools_ui";
+if(`window -exists $mWindow`)
+{
+      deleteUI $mWindow;
+}
+
+$mWindow = `window 
+      -title "TEsterbeseter" 
+      -width 400
+      $mWindow`;
+      string $mColumn = `columnLayout -p $mWindow`;
+            button -p $mColumn -label "adding" -command adding;
+            button -label "print Int" -command stateValue;
+
+            optionVar -stringValue "floatfeild1" `floatField`;
+            optionVar -stringValue "floatfeild2" `floatField`;
+            optionVar -stringValue "floatfeild3" `floatField -editable 0`;
+            optionVar -stringValue "myTextFeild" `textField -editable 0`;
+
+            
+            string $mRow = `rowLayout -numberOfColumns 3`;
+                  button;
+                  button;
+                  button;
+            string $m2Row = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  button;
+showWindow $mWindow;

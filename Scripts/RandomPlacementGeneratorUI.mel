@@ -1,0 +1,89 @@
+global proc test(float $ss, float $s2)
+{
+      print($s2);
+}
+
+global proc RandomlyDristibute(int $dupes, float $minX, float $maxX, float $minY, float $maxY, float $minZ, float $maxZ)
+{
+      for ($i=0; $i<($dupes); $i++)
+      {
+            float $Xpos = rand($minX,$maxX);
+            float $Ypos = rand($minY,$maxY);
+            float $Zpos = rand($minZ, $maxZ);
+            duplicate -rr;
+            move -a -os -wd $Xpos $Ypos $Zpos;
+      }
+}
+global proc start()
+{
+      string $var1 = `optionVar -q "minXFloat"`;
+      string $var2 = `optionVar -q "minYFloat"`;
+      string $var3 = `optionVar -q "minZFloat"`;
+      string $var4 = `optionVar -q "maxXFloat"`;
+      string $var5 = `optionVar -q "maxYFloat"`;
+      string $var6 = `optionVar -q "maxZFloat"`;
+      string $var7 = `optionVar -q "dupeNum"`;
+      
+      float $value1 = `floatField -q -value $var1`;
+      float $value2 = `floatField -q -value $var2`;
+      float $value3 = `floatField -q -value $var3`;
+      float $value4 = `floatField -q -value $var4`;
+      float $value5 = `floatField -q -value $var5`;
+      float $value6 = `floatField -q -value $var6`;
+      float $value7 = `intField -q -value $var7`;
+
+      float $output1 = $value1;
+      float $output2 = $value2;
+      float $output3 = $value3;
+      float $output4 = $value4;
+      float $output5 = $value5;
+      float $output6 = $value6;
+      float $output7 = $value7;
+
+      print($value1);
+      print($value2);
+      print($value4);
+      print($value3);
+      print($value5);
+      print($value6);
+      print($value7);
+      RandomlyDristibute($output7, $output1, $output4, $output2, $output5, $output3, $output6);
+      test($var2, $value7);
+}
+
+//int $dupes, float $minX, float $maxX
+string $mWindow = "my_tools_ui";
+if(`window -exists $mWindow`)
+{
+      deleteUI $mWindow;
+}
+
+$mWindow = `window 
+      -title "random placement generator" 
+      -width 400
+      $mWindow`;
+      string $mColumn = `columnLayout -p $mWindow`;
+           
+
+            string $m2Row = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  text -label "Min X" -width 90;
+                  text -label "Min Y" -width 90;
+                  text -label "Min Z" -width 90;
+            string $m3Row = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  optionVar -stringValue "minXFloat" `floatField -p $m3Row -width 90`;
+                  optionVar -stringValue "minYFloat" `floatField -p $m3Row -width 90`;
+                  optionVar -stringValue "minZFloat" `floatField -p $m3Row -width 90`;
+            string $m4Row = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  text -label "Max X" -width 90;
+                  text -label "Max Y" -width 90;
+                  text -label "max Z" -width 90;
+             string $m5Row = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  optionVar -stringValue "maxXFloat" `floatField -p $m5Row -width 90`;
+                  optionVar -stringValue "maxYFloat" `floatField -p $m5Row -width 90`;
+                  optionVar -stringValue "maxZFloat" `floatField -p $m5Row -width 90`;
+            string $m6Row = `rowLayout  -numberOfColumns 2 -p $mColumn`;
+                  text -label "Number of Duplicates" -width 110;
+                  optionVar -stringValue "dupeNum" `intField -p $m6Row -width 90`;
+                  
+            button -p $mColumn -width 270 -label "GOOOOOOOOOO" -command start;
+showWindow $mWindow;
