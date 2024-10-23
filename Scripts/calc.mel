@@ -1,6 +1,4 @@
 
-
-
 global proc float add(float $input[])
 {
        float $curNum = 0;

@@ -1,0 +1,588 @@
+global proc float add(float $input[])
+{
+       float $curNum = 0;
+      for ($i=0; $i<(size($input)); $i++)
+      {
+            $curNum += ($input[$i]);
+            if ($i == size($input) -1)
+            {
+                  //print ($curNum + "\n" );
+                  return $curNum;
+            }
+      }
+}
+proc float subtract(float $input[])
+{
+       float $curNum = $input[0];
+      for ($i=1; $i<(size($input)); $i++)
+      {
+            $curNum -= ($input[$i]);
+            if ($i == size($input) -1)
+            {
+                  //print ($curNum + "\n" );
+                  return $curNum;
+            }
+      }
+}
+proc float multiple(float $input[])
+{
+       float $curNum = $input[0];
+      for ($i=1; $i<(size($input)); $i++)
+      {
+            $curNum *= ($input[$i]);
+            if ($i == size($input) -1)
+            {
+                  //print ($curNum + "\n" );
+                  return $curNum;
+            }
+      }
+}
+proc float division(float $input[])
+{
+       float $curNum = $input[0];
+      for ($i=1; $i<(size($input)); $i++)
+      {
+            $curNum /= ($input[$i]);
+            if ($i == size($input) -1)
+            {
+                  //print ($curNum + "\n" );
+                  return $curNum;
+            }
+      }
+}
+proc float powerOf(float $input[])
+{
+       float $curNum = $input[0];
+      for ($i=1; $i<(size($input)); $i++)
+      {
+            $curNum = pow($curNum ,($input[$i]));
+            if ($i == size($input) -1)
+            {
+                  //print ($curNum + "\n" );
+                  return $curNum;
+            }
+      }
+}
+proc float mean(float $input[])
+{
+       float $curNum = 0;
+      for ($i=0; $i<(size($input)); $i++)
+      {
+            $curNum += ($input[$i]);
+            
+            if ($i == size($input) -1)
+            {
+                  return ($curNum / size($input));
+            } 
+      }
+}
+proc float median(float $input[])
+{
+      int $medDet = 0;
+      int $medDet2 = 0;
+      if ((size($input) % 2) == 0)
+      {
+            int $medDet = (size($input) / 2);
+            float $medDet2 = (($input[$medDet] + $input[$medDet + 1]) / 2);
+            return ($medDet2);
+      }
+      else
+      {
+            int $medDet = ((size($input) / 2));
+            float $medDet2 = ($input[$medDet]);
+            return ($medDet2);
+      }
+}
+proc sayStatment(string $Operation, float $input[])
+{
+      string $tester3 = (" you'll get ");
+      string $tester2 = ("if you " + $Operation); 
+      string $tester = "e";
+      print ("if you " + $Operation);
+      for ($i=0; $i<(size($input)); $i++)
+      {
+            string $tester = $tester + " " + $input[$i] + ",";
+            print(" " + $input[$i] + ",");
+            if ($i==(size($input) - 1))
+            {
+                  string $results = `optionVar -q "results"`;
+                  textField -e -width 250 -text ($tester2 + $tester + $tester3) $results ;
+                  
+            }
+      }
+      print (" you'll get ");
+      
+      
+}
+global proc updateintDisplay()
+{
+
+      string $var1 = `optionVar -q "NumberOfNums"`;
+      int $value1 = `intField -q -value $var1`;
+      int $output1 = $value1;
+      if ($output1 == 2)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+      }
+      else if ($output1 == 3)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+
+      }
+      else if ($output1 == 4)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+      }
+      else if ($output1 == 5)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+      }
+      else if ($output1 == 6)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+            optionVar -stringValue "f6" `floatField -width 90`;
+      }
+      else if ($output1 == 7)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+            optionVar -stringValue "f6" `floatField -width 90`;
+            optionVar -stringValue "f7" `floatField -width 90`;
+      }
+      else if ($output1 == 8)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+            optionVar -stringValue "f6" `floatField -width 90`;
+            optionVar -stringValue "f7" `floatField -width 90`;
+            optionVar -stringValue "f8" `floatField -width 90`;
+      }
+      else if ($output1 == 9)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+            optionVar -stringValue "f6" `floatField -width 90`;
+            optionVar -stringValue "f7" `floatField -width 90`;
+            optionVar -stringValue "f8" `floatField -width 90`;
+            optionVar -stringValue "f9" `floatField -width 90`;
+      }
+      else if ($output1 == 10)
+      {
+            optionVar -stringValue "f1" `floatField -width 90`;
+            optionVar -stringValue "f2" `floatField -width 90`;
+            optionVar -stringValue "f3" `floatField -width 90`;
+            optionVar -stringValue "f4" `floatField -width 90`;
+            optionVar -stringValue "f5" `floatField -width 90`;
+            optionVar -stringValue "f6" `floatField -width 90`;
+            optionVar -stringValue "f7" `floatField -width 90`;
+            optionVar -stringValue "f8" `floatField -width 90`;
+            optionVar -stringValue "f9" `floatField -width 90`;
+            optionVar -stringValue "f10" `floatField -width 90`;
+      }
+      button -label "Start" -command solveProb;
+      optionVar -stringValue "results" `textField -editable 0`;
+      optionVar -stringValue "result2" `textField -editable 0`;
+}
+proc callmath(string $Operation,float $ListOfNum2[])
+{
+      if ($Operation == "add")
+      {
+            print (add ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (add ($ListOfNum2)) $results2 ;
+            
+            
+            
+      }
+      else if ($Operation == "subtract")
+      {
+           
+            print (subtract ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (subtract ($ListOfNum2)) $results2 ;
+            
+            
+      }
+      else if ($Operation == "multiple")
+      {
+            
+            print (multiple ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (multiple ($ListOfNum2)) $results2 ;
+            
+            
+      }
+      else if ($Operation == "divide")
+      {
+            
+            print (division ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (division ($ListOfNum2)) $results2 ;
+            
+            
+      }
+      else if ($Operation == "powerOf")
+      {
+            print (powerOf ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (powerOf ($ListOfNum2)) $results2 ;
+            
+      }
+      else if ($Operation == "mean")
+      {
+            print (mean ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (mean ($ListOfNum2)) $results2 ;
+      }
+      else if ($Operation == "median")
+      {
+            $ListOfNum = `sort $ListOfNum2`;
+            print (median ($ListOfNum2));
+            string $results2 = `optionVar -q "result2"`;
+            textField -e -width 200 -text (median ($ListOfNum2)) $results2 ;
+      }
+      else
+      {
+            print("that isnt a valid operation");
+      }
+
+}
+global proc Calculator(string $Operation)
+{
+      string $var11 = `optionVar -q "NumberOfNums"`;
+      int $value11 = `intField -q -value $var11`;
+      int $output11 = $value11;
+      
+
+      string $var1 = `optionVar -q "f1"`;
+      float $value1 = `floatField -q -value $var1`;
+      float $output1 = $value1;
+      
+      string $var2 = `optionVar -q "f2"`;
+      float $value2 = `floatField -q -value $var2`;
+      float $output2 = $value2;
+      
+      float $ListOfNum[] = {$output1,$output2,3,8,5};
+      if ($output11 == 2)
+      {
+            float $ListOfNum[] = {$output1,$output2};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+
+      }
+      else if ($output11 == 3)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            float $ListOfNum[] = {$output1,$output2,$output3};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+
+      }
+      else if ($output11 == 4)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 5)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 6)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+
+            string $var6 = `optionVar -q "f6"`;
+            float $value6 = `floatField -q -value $var6`;
+            float $output6 = $value6;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5,$output6};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 7)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+
+            string $var6 = `optionVar -q "f6"`;
+            float $value6 = `floatField -q -value $var6`;
+            float $output6 = $value6;
+
+            string $var7 = `optionVar -q "f7"`;
+            float $value7 = `floatField -q -value $var7`;
+            float $output7 = $value7;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5,$output6,$output7};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 8)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+
+            string $var6 = `optionVar -q "f6"`;
+            float $value6 = `floatField -q -value $var6`;
+            float $output6 = $value6;
+
+            string $var7 = `optionVar -q "f7"`;
+            float $value7 = `floatField -q -value $var7`;
+            float $output7 = $value7;
+            
+            string $var8 = `optionVar -q "f8"`;
+            float $value8 = `floatField -q -value $var8`;
+            float $output8 = $value8;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5,$output6,$output7,$output8};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 9)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+
+            string $var6 = `optionVar -q "f6"`;
+            float $value6 = `floatField -q -value $var6`;
+            float $output6 = $value6;
+
+            string $var7 = `optionVar -q "f7"`;
+            float $value7 = `floatField -q -value $var7`;
+            float $output7 = $value7;
+            
+            string $var8 = `optionVar -q "f8"`;
+            float $value8 = `floatField -q -value $var8`;
+            float $output8 = $value8;
+
+            string $var9 = `optionVar -q "f9"`;
+            float $value9 = `floatField -q -value $var9`;
+            float $output9 = $value9;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5,$output6,$output7,$output8,$output9};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+      else if ($output11 == 10)
+      {
+            string $var3 = `optionVar -q "f3"`;
+            float $value3 = `floatField -q -value $var3`;
+            float $output3 = $value3;
+
+            string $var4 = `optionVar -q "f4"`;
+            float $value4 = `floatField -q -value $var4`;
+            float $output4 = $value4;
+
+            string $var5 = `optionVar -q "f5"`;
+            float $value5 = `floatField -q -value $var5`;
+            float $output5 = $value5;
+
+            string $var6 = `optionVar -q "f6"`;
+            float $value6 = `floatField -q -value $var6`;
+            float $output6 = $value6;
+
+            string $var7 = `optionVar -q "f7"`;
+            float $value7 = `floatField -q -value $var7`;
+            float $output7 = $value7;
+            
+            string $var8 = `optionVar -q "f8"`;
+            float $value8 = `floatField -q -value $var8`;
+            float $output8 = $value8;
+
+            string $var9 = `optionVar -q "f9"`;
+            float $value9 = `floatField -q -value $var9`;
+            float $output9 = $value9;
+
+            string $var10 = `optionVar -q "f10"`;
+            float $value10 = `floatField -q -value $var10`;
+            float $output10 = $value10;
+            float $ListOfNum[] = {$output1,$output2,$output3,$output4,$output5,$output6,$output7,$output8,$output9,$output10};
+            sayStatment($Operation,$ListOfNum);
+            callmath($Operation,$ListOfNum);
+      }
+}
+global proc solveProb()
+{
+      string $addTrueFlase = `optionVar -q "choosenOperation1"`;
+      string $addTrueFlase2 = `radioButton -q -select $addTrueFlase`;
+      
+
+      string $subTrueFlase = `optionVar -q "choosenOperation2"`;
+      string $subTrueFlase2 = `radioButton -q -select $subTrueFlase`;
+      
+
+      string $multTrueFlase = `optionVar -q "choosenOperation3"`;
+      string $multTrueFlase2 = `radioButton -q -select $multTrueFlase`;
+      
+
+      string $dieTrueFlase = `optionVar -q "choosenOperation4"`;
+      string $dieTrueFlase2 = `radioButton -q -select $dieTrueFlase`;
+      
+
+      string $powerTrueFlase = `optionVar -q "choosenOperation6"`;
+      string $powerTrueFlase2 = `radioButton -q -select $powerTrueFlase`;
+      
+
+      string $meanTrueFlase = `optionVar -q "choosenOperation7"`;
+      string $meanTrueFlase2 = `radioButton -q -select $meanTrueFlase`;
+      
+
+      string $medTrueFlase = `optionVar -q "choosenOperation8"`;
+      string $medTrueFlase2 = `radioButton -q -select $medTrueFlase`;
+      
+
+      if ($addTrueFlase2 == 1)
+      {
+            string $SetOperation = "add";
+            Calculator($SetOperation);
+       
+      }
+      else if ($subTrueFlase2 == 1)
+      {
+            string $SetOperation = "subtract";
+            Calculator($SetOperation);
+         
+      }
+      else if ($multTrueFlase2 == 1)
+      {
+            string $SetOperation = "multiple";
+            Calculator($SetOperation);
+      }
+      else if ($dieTrueFlase2 == 1)
+      {
+            string $SetOperation = "divide";
+            Calculator($SetOperation);
+      }
+      else if ($powerTrueFlase2 == 1)
+      {
+            string $SetOperation = "powerOf";
+            Calculator($SetOperation);
+      }
+      else if ($meanTrueFlase2 == 1)
+      {
+            string $SetOperation = "mean";
+            Calculator($SetOperation);
+      }
+      else if ($medTrueFlase2 == 1)
+      {
+            string $SetOperation = "median";
+            Calculator($SetOperation);
+      }
+      
+      
+}
+global proc menuFunction()
+{
+string $mWindow = "my_tools_ui";
+
+if(`window -exists $mWindow`)
+{
+      deleteUI $mWindow;
+}
+$mWindow = `window 
+      -title "Calculator" 
+      -width 400
+      $mWindow`;
+      string $mColumn = `columnLayout -p $mWindow`;
+      string $textRow1 = `rowLayout  -numberOfColumns 3 -p $mColumn`;
+                  text -label "Choose What operation you want to commit." -width 230;
+            string $operationRow = `rowLayout  -numberOfColumns 56 -p $mColumn -adjustableColumn true`;
+            
+                  radioCollection;
+                  optionVar -stringValue "choosenOperation1" `radioButton -label "Add"`;
+                  optionVar -stringValue "choosenOperation2" `radioButton -label "Subtract"`;
+                  optionVar -stringValue "choosenOperation3" `radioButton -label "Multiple"`;
+                  optionVar -stringValue "choosenOperation4" `radioButton -label "Divide"`;
+                  optionVar -stringValue "choosenOperation6" `radioButton -label "Power Of"`;
+                  optionVar -stringValue "choosenOperation7" `radioButton -label "Mean"`;
+                  optionVar -stringValue "choosenOperation8" `radioButton -label "Median"`;
+            string $ChooseNumberOfNumbs = `rowLayout  -numberOfColumns 1 -p $mColumn -adjustableColumn true`;
+                  text -label "how many numbers will you be using? min 2, max 10" -width 280;
+                  string $ChooseNumberOfNumbs2 = `rowLayout  -numberOfColumns 3 -p $mColumn -adjustableColumn true`;
+                  optionVar -stringValue "NumberOfNums" `intField -width 90`;
+                  optionVar -stringValue "mainButton" `button -p $ChooseNumberOfNumbs2 -width 270 -label "Update int (reexecute script for reset)" -command updateintDisplay `;
+                  string $mColumn2 = `columnLayout -p $mWindow`;
+showWindow $mWindow;
+}
+menuFunction();
+
+
